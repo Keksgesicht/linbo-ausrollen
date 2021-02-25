@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "running linbo-remote with \"$linbo_params\""
 for pc in $(awk -F ';' '{print $2}' $work_output); do
 	sudo screen -dm -S linbo_ausrollen_$pc $linbo_exec -i $pc $linbo_params
 done

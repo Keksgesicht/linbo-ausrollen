@@ -30,7 +30,7 @@ next_round_prompt() {
 
 roll_out() {
 	. ./ausrollen.sh
-	if [ $interval -eq 0 ]; then
+	if [ -z "$interval" ] || [ "$interval" == "0" ]; then
 		next_round_prompt
 	else
 		sleep $interval
