@@ -9,6 +9,9 @@ export work_output="$work_dir/roll.txt"
 
 export linbo_exec="/usr/sbin/linbo-remote"
 export linbo_params="-w 1000 -b 0 -p format;sync:1;start:1"
+# -w 1000 -b 0 -p format;sync:1;start:1
+# -w 60 -b 0 start:1
+# -c start:1
 
 export groups="win10fs2 win10smart"
 export room_pc="306 611 612"
@@ -16,12 +19,26 @@ export room_pc="306 611 612"
 export interval="300s"
 export part_size="20"
 
-roll_out() {
-	. ./ausrollen.sh
-	sleep $interval
+next_round_prompt() {
+	while true; do
+		read -p "nächste Runde? " ans
+		if [ "$ans" == "ja" ]; then
+			break
+		fi
+	done
 }
 
-mkdir $work_dir
+roll_out() {
+	. ./ausrollen.sh
+	if [ $interval -eq 0 ]; then
+		next_round_prompt
+	else
+		sleep $interval
+	fi
+}
+
+mkdir $work_dir 2>/dev/null
+rm $work_dir/*.txt 2>/dev/null
 cat $work_pc | sort > $work_all
 
 truncate -s 0 $work_input
