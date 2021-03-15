@@ -8,8 +8,8 @@ export work_input="$work_dir/groups.txt"
 export work_output="$work_dir/roll.txt"
 
 export linbo_exec="/usr/sbin/linbo-remote"
-export linbo_params="-w 1000 -b 0 -p format;sync:1;start:1"
-# -w 1000 -b 0 -p format;sync:1;start:1
+export linbo_params="-w 1000 -b 0 -p format,sync:1,start:1"
+# -w 1000 -b 0 -p format,sync:1,start:1
 # -w 60 -b 0 start:1
 # -c start:1
 

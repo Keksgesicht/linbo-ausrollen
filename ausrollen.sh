@@ -9,7 +9,7 @@ sleep 1s
 
 failed_pc=""
 for pc in $(awk -F ';' '{print $2}' $work_output); do
-	sudo screen -ls linbo_ausrollen_$pc >/dev/null || \
+	sudo screen -ls | grep -q linbo_ausrollen_$pc || \
 	failed_pc+="$pc "
 done
 
