@@ -1,23 +1,23 @@
 #!/bin/bash
 
-export work_pc="/etc/linuxmuster/workstations"
-export work_dir="/tmp/ausrollen"
+work_pc="/etc/linuxmuster/workstations"
+work_dir="/tmp/ausrollen"
 
-export work_all="$work_dir/all.txt"
-export work_input="$work_dir/groups.txt"
-export work_output="$work_dir/roll.txt"
+work_all="$work_dir/all.txt"
+work_input="$work_dir/groups.txt"
+work_output="$work_dir/roll.txt"
 
-export linbo_exec="/usr/sbin/linbo-remote"
-export linbo_params="-w 1000 -b 0 -p format,sync:1,start:1"
+linbo_exec="/usr/sbin/linbo-remote"
+linbo_params="-w 1000 -b 0 -p format,sync:1,start:1"
 # -w 1000 -b 0 -p format,sync:1,start:1
 # -w 60 -b 0 start:1
 # -c start:1
 
-export groups="win10fs2 win10smart"
-export room_pc="306 611 612"
+groups="win10fs2 win10smart"
+room_pc="306 611 612"
 
-export interval="300s"
-export part_size="20"
+interval="300s"
+part_size="20"
 
 next_round_prompt() {
 	while true; do
