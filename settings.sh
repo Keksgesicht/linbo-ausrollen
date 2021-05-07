@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# output coloring
+NC='\033[0m' # No Color
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+
+# work directories
 work_pc="/etc/linuxmuster/workstations"
 work_dir="/tmp/ausrollen"
 
@@ -7,6 +15,7 @@ work_all="$work_dir/all.txt"
 work_input="$work_dir/groups.txt"
 work_output="$work_dir/roll.txt"
 
+# exec parameter
 linbo_exec="/usr/sbin/linbo-remote"
 linbo_params_sync="-w 1000 -b 0 -p format,sync:1,start:1"
 linbo_params_start=$(echo -e "-w 60 -b 0 start:1\n-c start:1")
@@ -49,8 +58,9 @@ roll_out() {
 	fi
 }
 
+# cleanup and preparation
 mkdir $work_dir 2>/dev/null
-rm $work_dir/*.txt 2>/dev/null
+rm -r $work_dir/* 2>/dev/null
 cat $work_pc | sort -t';' -nk2 > $work_all
 
 truncate -s 0 $work_input
