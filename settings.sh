@@ -20,6 +20,7 @@ work_output="$work_dir/roll.txt"
 linbo_exec="/usr/sbin/linbo-remote"
 linbo_params_sync="-w 1000 -b 0 -p format,sync:1,start:1"
 linbo_params_start=$(echo -e "-w 60 -b 0 start:1\n-c start:1")
+linbo_params_linbo="-w 60 -c start:0"
 
 case $1 in
 	'-start')
@@ -28,6 +29,10 @@ case $1 in
 	;;
 	'-sync')
 		linbo_params=$linbo_params_sync
+		shift
+	;;
+	'-linbo')
+		linbo_params=$linbo_params_linbo
 		shift
 	;;
 	*)
