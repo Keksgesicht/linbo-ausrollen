@@ -27,3 +27,5 @@ if [ -n "$failed_pc" ]; then
 	echo "Bei folgenden PCs ist ein Fehler aufgetreten:"
 	echo "$failed_pc"
 fi
+
+cleanup

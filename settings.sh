@@ -41,34 +41,16 @@ case $1 in
 esac
 
 groups="win10fs2 win10smart"
-room_pc="306 611 612"
-
-interval="300s"
-part_size="20"
-
-next_round_prompt() {
-	while true; do
-		read -p "nächste Runde? " ans
-		if [ "$ans" == "ja" ]; then
-			break
-		fi
-	done
-}
-
-roll_out() {
-	. ./ausrollen.sh
-	if [ -z "$interval" ] || [ "$interval" == "0" ]; then
-		next_round_prompt
-	else
-		sleep $interval
-	fi
-}
 
 # cleanup and preparation
-mkdir $work_dir 2>/dev/null
-rm -r $work_dir/* 2>/dev/null
-cat $work_pc | sort -t';' -nk2 > $work_all
+cleanup() {
+	rm -r $work_dir 2>/dev/null
+	mkdir $work_dir 2>/dev/null
+}
+cleanup
 
+# preparation
+cat $work_pc | sort -t';' -nk2 > $work_all
 truncate -s 0 $work_input
 for g in $groups; do
 	grep $g $work_all > $work_dir/$g.txt
