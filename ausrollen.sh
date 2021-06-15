@@ -1,13 +1,19 @@
 #!/bin/bash
 
 echo "running linbo-remote with \"$linbo_params\""
-for pc in $(awk -F ';' '{print $2}' $work_output); do
-	IFS=$'\n'
+
+IFS=$'\n'
+for line in $(cat $work_output); do
+	client_name=$(echo $line | awk -F ';' '{print $2}')
+	client_mac=$(echo $line | awk -F ';' '{print $4}')
+
+	wakeonlan $client_mac >/dev/null
 	for lp in $linbo_params; do
-		eval sudo screen -dm -S linbo_ausrollen_$pc $linbo_exec -i $pc $lp
+		eval sudo screen -dm -S linbo_ausrollen_${client_name} $linbo_exec -i $client_name $lp
 	done
-	unset IFS
+	wakeonlan $client_mac >/dev/null
 done
+unset IFS
 
 sleep 1s
 
