@@ -21,7 +21,7 @@ check_newest() {
 	curl -m $timeout http://${client_ip}:2718/image.desc 2>/dev/null > $from_client
 
 	client_info="${client_gruppe}\t${client_ip}\t${client_mac}\t${client_name}"
-	[ $(echo "${client_info}\t" | wc -c) -lt 50 ] && client_info+="\t"
+	[ $(echo -e "${client_info}\t" | wc -c) -lt 53 ] && client_info+="\t"
 	if ! [ -s $from_client ]; then
 		echo -e "${client_info}\t$(cat ${client_offline})" >> $check_file
 	elif diff -q $from_image $from_client >/dev/null; then
@@ -46,3 +46,4 @@ done
 
 sleep 5s
 sort -nk4 $check_file
+cleanup

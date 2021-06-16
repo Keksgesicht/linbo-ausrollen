@@ -4,7 +4,6 @@
 file_prefix=$(dirname $0)/$(basename $0 .sh)
 
 for group in $groups; do
-
 	group_file=${file_prefix}_${group}.txt
 	cp ${group_file} ${group_file}.old
 	tmp_file=$(mktemp)
@@ -21,3 +20,5 @@ for group in $groups; do
 	(cat $diff_file && echo w) | ed - $group_file
 	rm $tmp_file $diff_file
 done
+
+cleanup
