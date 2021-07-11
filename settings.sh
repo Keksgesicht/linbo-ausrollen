@@ -45,11 +45,11 @@ groups="win10fs2 win10smart"
 # cleanup and preparation
 cleanup() {
 	rm -r $work_dir 2>/dev/null
-	mkdir $work_dir 2>/dev/null
 }
 cleanup
 
 # preparation
+mkdir $work_dir 2>/dev/null
 cat $work_pc | sort -t';' -nk2 > $work_all
 truncate -s 0 $work_input
 for g in $groups; do

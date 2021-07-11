@@ -7,7 +7,6 @@ for line in $(cat $work_output); do
 	client_name=$(echo $line | awk -F ';' '{print $2}')
 	client_mac=$(echo $line | awk -F ';' '{print $4}')
 
-	wakeonlan $client_mac >/dev/null
 	for lp in $linbo_params; do
 		eval sudo screen -dm -S linbo_ausrollen_${client_name} $linbo_exec -i $client_name $lp
 	done
