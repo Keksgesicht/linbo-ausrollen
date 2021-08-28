@@ -10,7 +10,6 @@ for line in $(cat $work_output); do
 	for lp in $linbo_params; do
 		eval sudo screen -dm -S linbo_ausrollen_${client_name} $linbo_exec -i $client_name $lp
 	done
-	wakeonlan $client_mac >/dev/null
 done
 unset IFS
 
