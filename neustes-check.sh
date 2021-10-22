@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./settings.sh
+. "$(dirname $0)"/settings.sh
 IFS=$'\n'
 timeout=3
 check_file=${work_dir}/check_global.txt

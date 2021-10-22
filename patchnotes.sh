@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./settings.sh
+. "$(dirname $0)"/settings.sh
 file_prefix=$(dirname $0)/$(basename $0 .sh)
 
 for group in $groups; do

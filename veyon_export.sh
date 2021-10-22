@@ -1,9 +1,7 @@
 #!/bin/bash
 
-pushd /home/admin/scripts/linbo-ausrollen/
-source ./settings.sh
+. "$(dirname $0)"/settings.sh
 output_dir="/home/administrators/pgmadmin/veyon_locations"
-popd
 
 mkdir $output_dir
 
@@ -50,5 +48,5 @@ sort -nk1 | \
 tr ' ' ';' >${output_dir}/veyon_612.csv
 
 # copy import script
-cp ./veyon_import.bat ${output_dir}/
+cp "$(dirname $0)"/veyon_import.bat ${output_dir}/
 rm /tmp/ausrollen/*

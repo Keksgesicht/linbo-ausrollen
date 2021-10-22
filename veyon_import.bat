@@ -39,4 +39,3 @@ cd "C:\Program Files\Veyon"
 
 .\veyon-cli.exe networkobjects remove win10smart
 .\veyon-cli.exe networkobjects import "C:\Users\pgmadmin\Downloads\veyon_smart.csv" location "win10smart" format "%%name%%;%%host%%;%%mac%%"
-

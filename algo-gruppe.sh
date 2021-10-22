@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ./settings.sh
+. "$(dirname $0)"/settings.sh
 tmp_file=$work_dir/gruppe.txt
 
 for g in $@; do
@@ -11,4 +11,4 @@ for g in $@; do
 	cat $tmp_file >> $work_output
 done
 
-. ./ausrollen.sh
+. "$(dirname $0)"/ausrollen.sh
