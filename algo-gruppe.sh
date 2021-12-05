@@ -6,7 +6,7 @@ tmp_file=$work_dir/gruppe.txt
 for g in $@; do
 	awk -F ';' '$3 ~ /^'$g'$/ {print}' $work_input > $tmp_file
 	if [ -z "$(cat $tmp_file)" ]; then
-		echo "Keine Gruppe $g gefunden!"
+		echo "${YELLOW}Keine Gruppe $g gefunden!${NC}"
 	fi
 	cat $tmp_file >> $work_output
 done

@@ -22,7 +22,7 @@ for pc in $(awk -F ';' '{print $2}' $work_output); do
 done
 
 if [ -n "$failed_pc" ]; then
-	echo "Bei folgenden PCs ist ein Fehler aufgetreten:"
+	echo "Bei folgenden PCs ist ein Fehler aufgetreten (PXE an?):"
 	echo "$failed_pc"
 fi
 
