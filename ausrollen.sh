@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ -z "$work_output" ]; then
+	echo "$0 nicht direkt starten."
+	echo "Starte einer der $(dirname $0)/algo-*"
+	exit 1
+fi
+
 echo "running linbo-remote with \"$linbo_params\""
 
 IFS=$'\n'

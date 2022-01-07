@@ -49,4 +49,4 @@ tr ' ' ';' >${output_dir}/veyon_612.csv
 
 # copy import script
 cp "$(dirname $0)"/veyon_import.bat ${output_dir}/
-rm /tmp/ausrollen/*
+cleanup

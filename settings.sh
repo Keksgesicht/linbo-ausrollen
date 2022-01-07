@@ -11,6 +11,7 @@ YELLOW='\033[1;33m'
 # work directories
 work_pc="/etc/linuxmuster/workstations"
 work_dir="/tmp/ausrollen"
+debug_dir="/tmp/ausrollen_debug"
 
 work_all="$work_dir/all.txt"
 work_input="$work_dir/groups.txt"
@@ -18,7 +19,7 @@ work_output="$work_dir/roll.txt"
 
 # exec parameter
 linbo_exec="/usr/sbin/linbo-remote"
-linbo_params_sync="-w 250 -b 0 -p format,sync:1,start:1"
+linbo_params_sync="-w 250 -b 0 -p format:1,sync:1,start:1"
 linbo_params_start=$(echo -e "-w 100 -b 0 start:1\n-c start:1")
 linbo_params_linbo="-w 100 -c start:0"
 
@@ -40,7 +41,7 @@ case $1 in
 	;;
 esac
 
-groups="win10fs2 win10smart"
+groups="win10fs2 win10smart win10uefi"
 
 # cleanup and preparation
 cleanup() {
