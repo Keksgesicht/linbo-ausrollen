@@ -30,13 +30,13 @@ check_newest() {
 	client_mac=$(echo $1 | awk -F ';' '{print $4}')
 	client_ip=$(echo $1 | awk -F ';' '{print $5}')
 
-	from_image=/var/linbo/${client_gruppe}.cloop.desc
+	from_image=/srv/linbo/${client_gruppe}.cloop.info
 	from_client=${work_dir}/check_${client_name}.txt
 
 	client_offline=${from_client}.off
 	echo -e "${BLUE}[Offline]${NC}" >${client_offline}
 	linbo_status &
-	curl -m 2 http://${client_ip}:2718/image.desc 2>/dev/null > $from_client
+	curl -m 2 http://${client_ip}:2718/image.info 2>/dev/null > $from_client
 
 	client_info="${client_gruppe}\t${client_ip}\t${client_mac}\t${client_name}"
 	[ $(echo -e "${client_info}\t" | wc -c) -lt 53 ] && client_info+="\t"
@@ -45,7 +45,7 @@ check_newest() {
 	elif diff -q $from_image $from_client >/dev/null; then
 		echo -e "${client_info}\t${GREEN}(neuestes Image)${NC}" >> $check_file
 	else
-		for image_file in $(ls /var/linbo/${client_gruppe}*.cloop.desc); do
+		for image_file in $(ls /var/linbo/${client_gruppe}*.cloop.info); do
 			if diff -q $image_file $from_client >/dev/null; then
 				image_date=$(stat -c %y $image_file | cut -d '.' -f1)
 				echo -e "${client_info}\t${RED}(${image_date})${NC}" >> $check_file
@@ -53,7 +53,7 @@ check_newest() {
 			fi
 		done
 		if [ -z "$image_date" ]; then
-			echo -e "${client_info}\t${RED}(älteres Image)${NC}" >> $check_file
+			echo -e "${client_info}\t${RED}(unbekanntes Image)${NC}" >> $check_file
 		fi
 	fi
 }

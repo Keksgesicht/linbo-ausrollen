@@ -9,7 +9,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 
 # work directories
-work_pc="/etc/linuxmuster/workstations"
+work_pc="/etc/linuxmuster/sophomorix/default-school/devices.csv"
 work_dir="/tmp/ausrollen"
 debug_dir="/tmp/ausrollen_debug"
 
@@ -19,7 +19,7 @@ work_output="$work_dir/roll.txt"
 
 # exec parameter
 linbo_exec="/usr/sbin/linbo-remote"
-linbo_params_sync="-w 250 -b 0 -p format:1,sync:1,start:1"
+linbo_params_sync="-w 600 -b 0 -p format,sync:1,start:1"
 linbo_params_start=$(echo -e "-w 100 -b 0 start:1\n-c start:1")
 linbo_params_linbo="-w 100 -c start:0"
 
