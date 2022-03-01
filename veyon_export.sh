@@ -10,10 +10,10 @@ cat ${work_input} | \
 awk -F ";" '$3 ~ /^win10fs2$/ {print $2,$5,$4}' | \
 tr ' ' ';' >${output_dir}/veyon_fs2.csv
 
-# Location: win10smart
+# Location: win10edu
 cat ${work_input} | \
-awk -F ";" '$3 ~ /^win10smart$/ {print $2,$5,$4}' | \
-tr ' ' ';' >${output_dir}/veyon_smart.csv
+awk -F ";" '$3 ~ /^win10edu$/ {print $2,$5,$4}' | \
+tr ' ' ';' >${output_dir}/veyon_edu.csv
 
 # Location: 0. Stock
 cat ${work_input} | \

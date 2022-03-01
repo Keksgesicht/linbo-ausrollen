@@ -41,7 +41,7 @@ case $1 in
 	;;
 esac
 
-groups="win10fs2 win10smart win10uefi"
+groups="win10fs2 win10edu"
 
 # cleanup and preparation
 cleanup() {
