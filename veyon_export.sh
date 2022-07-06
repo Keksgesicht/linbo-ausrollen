@@ -1,9 +1,9 @@
 #!/bin/bash
 
 . "$(dirname $0)"/settings.sh
-output_dir="/home/administrators/pgmadmin/veyon_locations"
+output_dir="/srv/samba/global/management/global-admin/veyon_locations"
 
-mkdir $output_dir
+mkdir -p $output_dir
 
 # Location: win10fs2
 cat ${work_input} | \
@@ -50,3 +50,5 @@ tr ' ' ';' >${output_dir}/veyon_612.csv
 # copy import script
 cp "$(dirname $0)"/veyon_import.bat ${output_dir}/
 cleanup
+
+echo ${output_dir}

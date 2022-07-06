@@ -45,7 +45,7 @@ check_newest() {
 	elif diff -q $from_image $from_client >/dev/null; then
 		echo -e "${client_info}\t${GREEN}(neuestes Image)${NC}" >> $check_file
 	else
-		for image_file in $(ls /var/linbo/${client_gruppe}*.cloop.info); do
+		for image_file in $(ls /srv/linbo/${client_gruppe}*.cloop.info); do
 			if diff -q $image_file $from_client >/dev/null; then
 				image_date=$(stat -c %y $image_file | cut -d '.' -f1)
 				echo -e "${client_info}\t${RED}(${image_date})${NC}" >> $check_file
