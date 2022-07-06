@@ -41,3 +41,6 @@ SET SCRIPT_LOCATION=%~dp0
 
 .\veyon-cli.exe networkobjects remove win10edu
 .\veyon-cli.exe networkobjects import "%SCRIPT_LOCATION%veyon_edu.csv" location "win10edu" format "%%name%%;%%host%%;%%mac%%"
+
+.\veyon-cli.exe networkobjects remove verwaltung
+.\veyon-cli.exe networkobjects import "%SCRIPT_LOCATION%veyon_verwaltung.csv" location "verwaltung" format "%%name%%;%%host%%;%%mac%%"

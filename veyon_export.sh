@@ -29,6 +29,12 @@ for i in $(seq 1 7); do
 	tr ' ' ';' >${output_dir}/veyon_${i}00.csv
 done
 
+# Verwaltung
+cat ${work_input} | \
+awk -F ";" '$1 ~ /^v[0-9][0-9][0-9]$/ {print $2,$5,$4}' | \
+sort -nk1 | \
+tr ' ' ';' >${output_dir}/veyon_verwaltung.csv
+
 # Location: r306
 cat ${work_input} | \
 awk -F ";" '$1 ~ /^r306$/ {print $2,$5,$4}' | \
