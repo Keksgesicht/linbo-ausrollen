@@ -58,7 +58,7 @@ check_newest() {
 	fi
 }
 
-for client in $(cat $work_input); do
+for client in $(cat $work_input | egrep "$1"); do
 	check_newest "$client" >/dev/null 2>&1 &
 done
 
